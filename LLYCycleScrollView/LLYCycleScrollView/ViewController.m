@@ -7,6 +7,9 @@
 //
 
 #import "ViewController.h"
+#import "LLYCycleScrollView.h"
+
+#define K_ScreenWidth [UIScreen mainScreen].bounds.size.width
 
 @interface ViewController ()
 
@@ -16,6 +19,9 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    self.view.backgroundColor = [UIColor whiteColor];
+    LLYCycleScrollView *cycView = [LLYCycleScrollView initWithFrame:CGRectMake(0, 64, K_ScreenWidth, 180) delegate:self placeholderImage:nil];
+    [self.view addSubview:cycView];
     
 }
 

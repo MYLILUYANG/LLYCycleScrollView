@@ -15,6 +15,7 @@
 		DE351ADD1EB884870069A81E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DE351ADB1EB884870069A81E /* LaunchScreen.storyboard */; };
 		DE351AE81EB884870069A81E /* LLYCycleScrollViewTests.m in Sources */ = {isa = PBXBuildFile; fileRef = DE351AE71EB884870069A81E /* LLYCycleScrollViewTests.m */; };
 		DE351AF31EB884870069A81E /* LLYCycleScrollViewUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = DE351AF21EB884870069A81E /* LLYCycleScrollViewUITests.m */; };
+		DE351B021EB884FE0069A81E /* LLYCycleScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = DE351B011EB884FE0069A81E /* LLYCycleScrollView.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -51,6 +52,8 @@
 		DE351AEE1EB884870069A81E /* LLYCycleScrollViewUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = LLYCycleScrollViewUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		DE351AF21EB884870069A81E /* LLYCycleScrollViewUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LLYCycleScrollViewUITests.m; sourceTree = "<group>"; };
 		DE351AF41EB884870069A81E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		DE351B001EB884FE0069A81E /* LLYCycleScrollView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LLYCycleScrollView.h; sourceTree = "<group>"; };
+		DE351B011EB884FE0069A81E /* LLYCycleScrollView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LLYCycleScrollView.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -105,6 +108,8 @@
 				DE351AD11EB884870069A81E /* AppDelegate.m */,
 				DE351AD31EB884870069A81E /* ViewController.h */,
 				DE351AD41EB884870069A81E /* ViewController.m */,
+				DE351B001EB884FE0069A81E /* LLYCycleScrollView.h */,
+				DE351B011EB884FE0069A81E /* LLYCycleScrollView.m */,
 				DE351AD61EB884870069A81E /* Main.storyboard */,
 				DE351AD91EB884870069A81E /* Assets.xcassets */,
 				DE351ADB1EB884870069A81E /* LaunchScreen.storyboard */,
@@ -275,6 +280,7 @@
 			files = (
 				DE351AD51EB884870069A81E /* ViewController.m in Sources */,
 				DE351AD21EB884870069A81E /* AppDelegate.m in Sources */,
+				DE351B021EB884FE0069A81E /* LLYCycleScrollView.m in Sources */,
 				DE351ACF1EB884870069A81E /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
