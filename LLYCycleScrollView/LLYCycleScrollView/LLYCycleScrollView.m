@@ -16,7 +16,7 @@
 
 @property (nonatomic, strong) NSArray *imagePathsGroup;
 @property (nonatomic, assign) NSInteger totalItemsCount;
-
+@property (nonatomic, strong) NSTimer *timer;
 @end
 
 @implementation LLYCycleScrollView
@@ -45,6 +45,23 @@
     [self setupMainView];
 }
 
+-(void)layoutSubviews
+{
+    [super layoutSubviews];
+    
+    if (_mainView.contentOffset.x == 0 && _totalItemsCount) {
+        int targetIndex = 0;
+        if (self.infiniteLoop) {
+            targetIndex = _totalItemsCount * 0.5;
+        }else
+        {
+            targetIndex = 0;
+        }
+        [_mainView scrollToItemAtIndexPath:[NSIndexPath indexPathForItem:targetIndex inSection:0] atScrollPosition:UICollectionViewScrollPositionNone animated:NO];
+    }
+    
+}
+
 -(void)initlizetion
 {
     //初始化各项默认参数
@@ -54,8 +71,9 @@
     _titleLabelTextAlignment = NSTextAlignmentLeft;
     _titleLabelBackgroundColor = [UIColor lightGrayColor];
     
-    
-    
+    _aotoScrollTimeInterval = 2.0;
+    _autoScroll = YES;
+    _infiniteLoop = YES;
 }
 
 -(void)setupMainView
@@ -110,11 +128,79 @@
 
 -(void)setImagePathsGroup:(NSArray *)imagePathsGroup
 {
+    [self invalidateTime];
+    
     _imagePathsGroup = imagePathsGroup;
     
     _totalItemsCount = self.imagePathsGroup.count * 50;
     
     [self.mainView reloadData];
+    
+}
+
+-(void)setAotoScrollTimeInterval:(CGFloat)aotoScrollTimeInterval
+{
+    _aotoScrollTimeInterval = aotoScrollTimeInterval;
+    [self setAutoScroll:self.autoScroll];
+    
+}
+
+-(void)setAutoScroll:(BOOL)autoScroll
+{
+    _autoScroll = autoScroll;
+    if (_timer) {
+        
+        [self invalidateTime];
+    }
+    if (_autoScroll) {
+        
+        [self setupTimer];
+        
+    }
+}
+
+-(void)setupTimer
+{
+    NSTimer *timer = [NSTimer scheduledTimerWithTimeInterval:self.aotoScrollTimeInterval target:self selector:@selector(automicScroll) userInfo:nil repeats:YES];
+    _timer = timer;
+    [[NSRunLoop mainRunLoop] addTimer:timer forMode:NSRunLoopCommonModes];
+}
+
+-(void)automicScroll
+{
+    if (_totalItemsCount == 0) return;
+    
+    if (_flowLayout.scrollDirection == UICollectionViewScrollDirectionHorizontal) {
+        
+        NSLog(@"scroll to next one");
+        [self scrollToIndex:10];
+
+    }
+    
+}
+
+-(void)scrollToIndex:(int)index
+{
+    if (index >= _totalItemsCount) {
+        if (_infiniteLoop) {
+            
+            index = _totalItemsCount * 0.5;
+            [_mainView scrollToItemAtIndexPath:[NSIndexPath indexPathForItem:index inSection:0] atScrollPosition:UICollectionViewScrollPositionNone animated:YES];
+#warning 设置这里应该不会影响运行效果
+            return;
+            
+        }
+        
+    }
+    [_mainView scrollToItemAtIndexPath:[NSIndexPath indexPathForItem:index inSection:0] atScrollPosition:UICollectionViewScrollPositionNone animated:YES];
+    
+    
+}
+
+-(void)invalidateTime
+{
+    [_timer invalidate];
+    _timer = nil;
 }
 
 #pragma mark - UICollectionViewDataSource
@@ -162,6 +248,12 @@
 }
 
 
+#pragma mark - UIScrollViewDelegate
+
+-(void)scrollViewDidScroll:(UIScrollView *)scrollView
+{
+    NSLog(@"did scroll");
+}
 
 
 

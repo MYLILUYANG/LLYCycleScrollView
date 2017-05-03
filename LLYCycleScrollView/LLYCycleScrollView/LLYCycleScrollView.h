@@ -43,6 +43,20 @@
  */
 @property (nonatomic, strong) NSArray *localImageNamesGroup;
 
+/**
+ 是否自己滚动  默认为YES
+ */
+@property (nonatomic, assign) BOOL autoScroll;
+
+/**
+ 循环时间间隔
+ */
+@property (nonatomic, assign) CGFloat aotoScrollTimeInterval;
+
+/**
+ 是否是无限循环 默认YES
+ */
+@property (nonatomic, assign) BOOL infiniteLoop;
 
 +(instancetype)initWithFrame:(CGRect)frame delegate:(id)delegate placeholderImage:(UIImage *)placeholderImage;
 
