@@ -7,7 +7,7 @@
 //
 
 #import "LLYCycleScrollView.h"
-
+#import "LLYCycleCell.h"
 @interface LLYCycleScrollView ()<UICollectionViewDelegate, UICollectionViewDataSource>
 
 @property (nonatomic, weak) UICollectionView *mainView;
@@ -59,7 +59,7 @@
     mainView.delegate = self;
     mainView.dataSource = self;
     mainView.backgroundColor = [UIColor clearColor];
-    [mainView registerClass:[UICollectionViewCell class] forCellWithReuseIdentifier:@"cellId"];
+    [mainView registerClass:[LLYCycleCell class] forCellWithReuseIdentifier:@"cellId"];
     mainView.showsVerticalScrollIndicator = false;
     mainView.showsHorizontalScrollIndicator = false;
     mainView.pagingEnabled = YES;
@@ -75,9 +75,11 @@
 
 -(UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
 {
-    UICollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"cellId" forIndexPath:indexPath];
-    cell.backgroundColor = [UIColor grayColor];
+    LLYCycleCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"cellId" forIndexPath:indexPath];
+    cell.imageView.image = [UIImage imageNamed:@"testimage"];
     
+    cell.titleLabel.text = @"ssssaaaaaa";
+    cell.titleLabelHeight = 20.0;
     return cell;
 }
 

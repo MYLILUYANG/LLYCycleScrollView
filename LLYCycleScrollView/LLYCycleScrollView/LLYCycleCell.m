@@ -38,7 +38,7 @@
 {
     UILabel *titleLabel = [[UILabel alloc] init];
     _titleLabel = titleLabel;
-    _titleLabel.hidden = YES;
+    //_titleLabel.hidden = YES;
     [self.contentView addSubview:_titleLabel];
 }
 

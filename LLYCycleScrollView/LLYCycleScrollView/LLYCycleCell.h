@@ -10,10 +10,15 @@
 
 @interface LLYCycleCell : UICollectionViewCell
 
-@property (nonatomic, weak) UIImageView *imageView;
+@property (nonatomic, weak)     UIImageView *imageView;
 
-@property (nonatomic, weak) UILabel *titleLabel;
+@property (nonatomic, weak)     UILabel     *titleLabel;
 
-@property (nonatomic, assign) CGFloat titleLabelHeight;
+@property (nonatomic, assign)   CGFloat     titleLabelHeight;
+@property (nonatomic, strong)   UIColor     *titleLabelTextColor;
+@property (nonatomic, strong)   UIColor     *titleLabelBackgroundColor;
+@property (nonatomic, strong)   UIFont      *titleLabelTextFont;
+@property (nonatomic, assign)   NSTextAlignment titleLabelTextAlignment;
+
 
 @end
