@@ -8,6 +8,7 @@
 
 #import "LLYCycleScrollView.h"
 #import "LLYCycleCell.h"
+#import "UIImageView+WebCache.h"
 @interface LLYCycleScrollView ()<UICollectionViewDelegate, UICollectionViewDataSource>
 
 @property (nonatomic, weak) UICollectionView *mainView;
