@@ -171,14 +171,11 @@
 			isa = PBXGroup;
 			children = (
 				DE351B0B1EB984F50069A81E /* SDWebImage */,
+				DE351B461EB9B6E60069A81E /* LLYCycleScrollView */,
 				DE351AD01EB884870069A81E /* AppDelegate.h */,
 				DE351AD11EB884870069A81E /* AppDelegate.m */,
 				DE351AD31EB884870069A81E /* ViewController.h */,
 				DE351AD41EB884870069A81E /* ViewController.m */,
-				DE351B001EB884FE0069A81E /* LLYCycleScrollView.h */,
-				DE351B011EB884FE0069A81E /* LLYCycleScrollView.m */,
-				DE351B031EB96CF30069A81E /* LLYCycleCell.h */,
-				DE351B041EB96CF30069A81E /* LLYCycleCell.m */,
 				DE351B061EB972EC0069A81E /* UIView+Frame.h */,
 				DE351B071EB972EC0069A81E /* UIView+Frame.m */,
 				DE351B091EB9780F0069A81E /* testimage.png */,
@@ -261,6 +258,17 @@
 				DE351B321EB984F60069A81E /* UIView+WebCacheOperation.m */,
 			);
 			path = SDWebImage;
+			sourceTree = "<group>";
+		};
+		DE351B461EB9B6E60069A81E /* LLYCycleScrollView */ = {
+			isa = PBXGroup;
+			children = (
+				DE351B001EB884FE0069A81E /* LLYCycleScrollView.h */,
+				DE351B011EB884FE0069A81E /* LLYCycleScrollView.m */,
+				DE351B031EB96CF30069A81E /* LLYCycleCell.h */,
+				DE351B041EB96CF30069A81E /* LLYCycleCell.m */,
+			);
+			name = LLYCycleScrollView;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */

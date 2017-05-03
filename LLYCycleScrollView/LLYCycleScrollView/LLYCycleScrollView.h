@@ -28,6 +28,21 @@
 
 @property (nonatomic, copy)     NSString    *title;
 
+/**
+ 网络图片数组
+ */
+@property (nonatomic, strong) NSArray *imageUrlStringGroup;
+
+/**
+ 每张图片对应的文字数组
+ */
+@property (nonatomic, strong) NSArray *titlesGroup;
+
+/**
+ 本地图片数组
+ */
+@property (nonatomic, strong) NSArray *localImageNamesGroup;
+
 
 +(instancetype)initWithFrame:(CGRect)frame delegate:(id)delegate placeholderImage:(UIImage *)placeholderImage;
 

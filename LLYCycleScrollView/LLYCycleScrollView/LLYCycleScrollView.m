@@ -14,6 +14,9 @@
 @property (nonatomic, weak) UICollectionView *mainView;
 @property (nonatomic, weak) UICollectionViewFlowLayout *flowLayout;
 
+@property (nonatomic, strong) NSArray *imagePathsGroup;
+@property (nonatomic, assign) NSInteger totalItemsCount;
+
 @end
 
 @implementation LLYCycleScrollView
@@ -50,6 +53,9 @@
     _titleLabelHeight = 30;
     _titleLabelTextAlignment = NSTextAlignmentLeft;
     _titleLabelBackgroundColor = [UIColor lightGrayColor];
+    
+    
+    
 }
 
 -(void)setupMainView
@@ -73,16 +79,65 @@
     [self addSubview:mainView];
     _mainView = mainView;
 }
+
+-(void)setImageUrlStringGroup:(NSArray *)imageUrlStringGroup
+{
+    _imageUrlStringGroup = imageUrlStringGroup;
+    
+    NSMutableArray *temp  = [NSMutableArray array];
+    
+    [_imageUrlStringGroup enumerateObjectsUsingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+       
+        NSString *urlString;
+        
+        if ([obj isKindOfClass:[NSString class]]) {
+            urlString = obj;
+        }else if([obj isKindOfClass:[NSURL class]]){
+            
+            NSURL *url = obj;
+            urlString = [url absoluteString];
+            
+            
+        }
+        if (urlString) {
+            [temp addObject:urlString];
+        }
+        
+        
+    }];
+    self.imagePathsGroup = [temp copy];
+}
+
+-(void)setImagePathsGroup:(NSArray *)imagePathsGroup
+{
+    _imagePathsGroup = imagePathsGroup;
+    
+    _totalItemsCount = self.imagePathsGroup.count * 50;
+    
+    [self.mainView reloadData];
+}
+
 #pragma mark - UICollectionViewDataSource
 -(NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section
 {
-    return 10;
+    return _totalItemsCount;
 }
 
 -(UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
 {
     LLYCycleCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"cellId" forIndexPath:indexPath];
-    cell.imageView.image = [UIImage imageNamed:@"testimage"];
+    
+    long itemIndex = [self pageControlIndexWithCurrentIndex:indexPath.item];
+    
+    NSString *urlString = self.imagePathsGroup[itemIndex];
+    
+    if ([urlString hasPrefix:@"http"]) {
+        
+        [cell.imageView sd_setImageWithURL:[NSURL URLWithString:urlString] placeholderImage:[UIImage imageNamed:@"testimage"]];
+        
+    }
+    
+    
     
     cell.title = @"test _ test";
     cell.titleLabelHeight = _titleLabelHeight;
@@ -90,7 +145,13 @@
     cell.titleLabelTextFont = _titleLabelTextFont;
     cell.titleLabelTextAlignment = _titleLabelTextAlignment;
     cell.titleLabelBackgroundColor = _titleLabelBackgroundColor;
+    
     return cell;
+}
+
+-(int)pageControlIndexWithCurrentIndex:(NSInteger) index
+{
+    return (int)index % self.imagePathsGroup.count;
 }
 
 #pragma mark - UICollectionViewDelegate
