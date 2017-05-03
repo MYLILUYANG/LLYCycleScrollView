@@ -44,7 +44,12 @@
 
 -(void)initlizetion
 {
-    //初始化各项参数
+    //初始化各项默认参数
+    _titleLabelTextColor = [UIColor whiteColor];
+    _titleLabelTextFont = [UIFont systemFontOfSize:14];
+    _titleLabelHeight = 30;
+    _titleLabelTextAlignment = NSTextAlignmentLeft;
+    _titleLabelBackgroundColor = [UIColor lightGrayColor];
 }
 
 -(void)setupMainView
@@ -79,8 +84,12 @@
     LLYCycleCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"cellId" forIndexPath:indexPath];
     cell.imageView.image = [UIImage imageNamed:@"testimage"];
     
-    cell.titleLabel.text = @"ssssaaaaaa";
-    cell.titleLabelHeight = 20.0;
+    cell.title = @"test _ test";
+    cell.titleLabelHeight = _titleLabelHeight;
+    cell.titleLabelTextColor = _titleLabelTextColor;
+    cell.titleLabelTextFont = _titleLabelTextFont;
+    cell.titleLabelTextAlignment = _titleLabelTextAlignment;
+    cell.titleLabelBackgroundColor = _titleLabelBackgroundColor;
     return cell;
 }
 

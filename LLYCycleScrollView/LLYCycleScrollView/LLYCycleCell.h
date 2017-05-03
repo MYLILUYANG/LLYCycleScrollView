@@ -20,5 +20,5 @@
 @property (nonatomic, strong)   UIFont      *titleLabelTextFont;
 @property (nonatomic, assign)   NSTextAlignment titleLabelTextAlignment;
 
-
+@property (nonatomic, copy)     NSString    *title;
 @end

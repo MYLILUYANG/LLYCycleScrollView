@@ -55,4 +55,39 @@
     
 }
 
+-(void)setTitleLabelTextColor:(UIColor *)titleLabelTextColor
+{
+    _titleLabelTextColor = titleLabelTextColor;
+    _titleLabel.textColor = _titleLabelTextColor;
+}
+
+-(void)setTitleLabelBackgroundColor:(UIColor *)titleLabelBackgroundColor
+{
+    _titleLabelBackgroundColor = titleLabelBackgroundColor;
+    _titleLabel.backgroundColor = titleLabelBackgroundColor;
+}
+
+-(void)setTitleLabelTextFont:(UIFont *)titleLabelTextFont
+{
+    _titleLabelTextFont = titleLabelTextFont;
+    _titleLabel.font = titleLabelTextFont;
+    
+}
+
+-(void)setTitleLabelTextAlignment:(NSTextAlignment)titleLabelTextAlignment
+{
+    _titleLabelTextAlignment = titleLabelTextAlignment;
+    _titleLabel.textAlignment = titleLabelTextAlignment;
+    
+}
+
+-(void)setTitle:(NSString *)title
+{
+    _title = [title copy];
+    _titleLabel.text = [NSString stringWithFormat:@"     %@",title];
+    if (_titleLabel.hidden) {
+        _titleLabel.hidden = false;
+    }
+}
+
 @end
