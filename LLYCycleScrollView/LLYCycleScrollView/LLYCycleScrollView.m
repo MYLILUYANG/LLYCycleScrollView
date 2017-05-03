@@ -133,7 +133,12 @@
     _imagePathsGroup = imagePathsGroup;
     
     _totalItemsCount = self.imagePathsGroup.count * 50;
-    
+    if (imagePathsGroup.count != 1) {
+        [self setAutoScroll:self.autoScroll];
+    }else
+    {
+        _mainView.scrollEnabled = false;
+    }
     [self.mainView reloadData];
     
 }
@@ -171,7 +176,7 @@
     if (_totalItemsCount == 0) return;
     
     if (_flowLayout.scrollDirection == UICollectionViewScrollDirectionHorizontal) {
-        
+#warning 计算scroll 的 index 
         NSLog(@"scroll to next one");
         [self scrollToIndex:10];
 
@@ -186,7 +191,7 @@
             
             index = _totalItemsCount * 0.5;
             [_mainView scrollToItemAtIndexPath:[NSIndexPath indexPathForItem:index inSection:0] atScrollPosition:UICollectionViewScrollPositionNone animated:YES];
-#warning 设置这里应该不会影响运行效果
+
             return;
             
         }
@@ -255,6 +260,24 @@
     NSLog(@"did scroll");
 }
 
+-(void)scrollViewWillBeginDragging:(UIScrollView *)scrollView
+{
+    NSLog(@"scrollViewWillBeginDragging");
+    if (_timer) {
+        [self invalidateTime];
+    }
+}
 
+-(void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate
+{
+    if (_infiniteLoop) {
+        [self setupTimer];
+    }
+}
+
+-(void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView
+{
+     NSLog(@"scrollViewDidEndDecelerating");
+}
 
 @end
