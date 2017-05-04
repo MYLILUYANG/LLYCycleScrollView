@@ -18,6 +18,9 @@
 @property (nonatomic, strong) NSArray *imagePathsGroup;
 @property (nonatomic, assign) NSInteger totalItemsCount;
 @property (nonatomic, strong) NSTimer *timer;
+
+@property (nonatomic, strong) UIControl *pageControl;
+
 @end
 
 @implementation LLYCycleScrollView
@@ -76,9 +79,14 @@
     _autoScroll = YES;
     _infiniteLoop = YES;
     
+    _showPageControl = YES;
 
-    
-    
+}
+
+-(void)setShowPageControl:(BOOL)showPageControl
+{
+    _showPageControl = showPageControl;
+    _pageControl.hidden = showPageControl;
 }
 
 -(void)setupMainView

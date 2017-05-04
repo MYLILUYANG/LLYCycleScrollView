@@ -58,6 +58,10 @@
  */
 @property (nonatomic, assign) BOOL infiniteLoop;
 
+/**
+ 是否显示pagecontrol。默认YES
+ */
+@property (nonatomic, assign) BOOL showPageControl;
 +(instancetype)initWithFrame:(CGRect)frame delegate:(id)delegate placeholderImage:(UIImage *)placeholderImage;
 
 @end
