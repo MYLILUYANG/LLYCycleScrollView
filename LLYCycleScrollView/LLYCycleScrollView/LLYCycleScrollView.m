@@ -102,8 +102,7 @@
         if (urlString) {
             [temp addObject:urlString];
         }
-        
-        
+ 
     }];
     self.imagePathsGroup = [temp copy];
 }
