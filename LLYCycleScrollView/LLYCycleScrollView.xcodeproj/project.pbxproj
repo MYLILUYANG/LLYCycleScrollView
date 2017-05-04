@@ -38,6 +38,10 @@
 		DE351B431EB984F60069A81E /* UIImageView+WebCache.m in Sources */ = {isa = PBXBuildFile; fileRef = DE351B2E1EB984F60069A81E /* UIImageView+WebCache.m */; };
 		DE351B441EB984F60069A81E /* UIView+WebCache.m in Sources */ = {isa = PBXBuildFile; fileRef = DE351B301EB984F60069A81E /* UIView+WebCache.m */; };
 		DE351B451EB984F60069A81E /* UIView+WebCacheOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = DE351B321EB984F60069A81E /* UIView+WebCacheOperation.m */; };
+		DE351B581EBAFE4B0069A81E /* TAAbstractDotView.m in Sources */ = {isa = PBXBuildFile; fileRef = DE351B511EBAFE4B0069A81E /* TAAbstractDotView.m */; };
+		DE351B591EBAFE4B0069A81E /* TAAnimatedDotView.m in Sources */ = {isa = PBXBuildFile; fileRef = DE351B531EBAFE4B0069A81E /* TAAnimatedDotView.m */; };
+		DE351B5A1EBAFE4B0069A81E /* TADotView.m in Sources */ = {isa = PBXBuildFile; fileRef = DE351B551EBAFE4B0069A81E /* TADotView.m */; };
+		DE351B5B1EBAFE4B0069A81E /* TAPageControl.m in Sources */ = {isa = PBXBuildFile; fileRef = DE351B571EBAFE4B0069A81E /* TAPageControl.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -120,6 +124,14 @@
 		DE351B301EB984F60069A81E /* UIView+WebCache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+WebCache.m"; sourceTree = "<group>"; };
 		DE351B311EB984F60069A81E /* UIView+WebCacheOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+WebCacheOperation.h"; sourceTree = "<group>"; };
 		DE351B321EB984F60069A81E /* UIView+WebCacheOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+WebCacheOperation.m"; sourceTree = "<group>"; };
+		DE351B501EBAFE4B0069A81E /* TAAbstractDotView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TAAbstractDotView.h; sourceTree = "<group>"; };
+		DE351B511EBAFE4B0069A81E /* TAAbstractDotView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TAAbstractDotView.m; sourceTree = "<group>"; };
+		DE351B521EBAFE4B0069A81E /* TAAnimatedDotView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TAAnimatedDotView.h; sourceTree = "<group>"; };
+		DE351B531EBAFE4B0069A81E /* TAAnimatedDotView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TAAnimatedDotView.m; sourceTree = "<group>"; };
+		DE351B541EBAFE4B0069A81E /* TADotView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TADotView.h; sourceTree = "<group>"; };
+		DE351B551EBAFE4B0069A81E /* TADotView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TADotView.m; sourceTree = "<group>"; };
+		DE351B561EBAFE4B0069A81E /* TAPageControl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TAPageControl.h; sourceTree = "<group>"; };
+		DE351B571EBAFE4B0069A81E /* TAPageControl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TAPageControl.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -170,6 +182,7 @@
 		DE351ACC1EB884870069A81E /* LLYCycleScrollView */ = {
 			isa = PBXGroup;
 			children = (
+				DE351B4F1EBAFE4B0069A81E /* PageControl */,
 				DE351B0B1EB984F50069A81E /* SDWebImage */,
 				DE351B461EB9B6E60069A81E /* LLYCycleScrollView */,
 				DE351AD01EB884870069A81E /* AppDelegate.h */,
@@ -269,6 +282,21 @@
 				DE351B041EB96CF30069A81E /* LLYCycleCell.m */,
 			);
 			name = LLYCycleScrollView;
+			sourceTree = "<group>";
+		};
+		DE351B4F1EBAFE4B0069A81E /* PageControl */ = {
+			isa = PBXGroup;
+			children = (
+				DE351B501EBAFE4B0069A81E /* TAAbstractDotView.h */,
+				DE351B511EBAFE4B0069A81E /* TAAbstractDotView.m */,
+				DE351B521EBAFE4B0069A81E /* TAAnimatedDotView.h */,
+				DE351B531EBAFE4B0069A81E /* TAAnimatedDotView.m */,
+				DE351B541EBAFE4B0069A81E /* TADotView.h */,
+				DE351B551EBAFE4B0069A81E /* TADotView.m */,
+				DE351B561EBAFE4B0069A81E /* TAPageControl.h */,
+				DE351B571EBAFE4B0069A81E /* TAPageControl.m */,
+			);
+			path = PageControl;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -406,12 +434,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				DE351B391EB984F60069A81E /* SDWebImageDecoder.m in Sources */,
+				DE351B5A1EBAFE4B0069A81E /* TADotView.m in Sources */,
 				DE351B3C1EB984F60069A81E /* SDWebImageManager.m in Sources */,
 				DE351B441EB984F60069A81E /* UIView+WebCache.m in Sources */,
 				DE351B371EB984F60069A81E /* SDImageCacheConfig.m in Sources */,
 				DE351B381EB984F60069A81E /* SDWebImageCompat.m in Sources */,
 				DE351B411EB984F60069A81E /* UIImage+WebP.m in Sources */,
 				DE351B081EB972EC0069A81E /* UIView+Frame.m in Sources */,
+				DE351B581EBAFE4B0069A81E /* TAAbstractDotView.m in Sources */,
 				DE351B421EB984F60069A81E /* UIImageView+HighlightedWebCache.m in Sources */,
 				DE351AD51EB884870069A81E /* ViewController.m in Sources */,
 				DE351B341EB984F60069A81E /* NSData+ImageContentType.m in Sources */,
@@ -421,6 +451,8 @@
 				DE351B3B1EB984F60069A81E /* SDWebImageDownloaderOperation.m in Sources */,
 				DE351AD21EB884870069A81E /* AppDelegate.m in Sources */,
 				DE351B051EB96CF30069A81E /* LLYCycleCell.m in Sources */,
+				DE351B591EBAFE4B0069A81E /* TAAnimatedDotView.m in Sources */,
+				DE351B5B1EBAFE4B0069A81E /* TAPageControl.m in Sources */,
 				DE351B401EB984F60069A81E /* UIImage+MultiFormat.m in Sources */,
 				DE351B331EB984F60069A81E /* MKAnnotationView+WebCache.m in Sources */,
 				DE351B021EB884FE0069A81E /* LLYCycleScrollView.m in Sources */,

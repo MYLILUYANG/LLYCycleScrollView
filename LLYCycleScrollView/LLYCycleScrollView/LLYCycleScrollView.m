@@ -70,11 +70,15 @@
     _titleLabelTextFont = [UIFont systemFontOfSize:14];
     _titleLabelHeight = 30;
     _titleLabelTextAlignment = NSTextAlignmentLeft;
-    _titleLabelBackgroundColor = [UIColor lightGrayColor];
+    _titleLabelBackgroundColor = [UIColor clearColor];
     
     _aotoScrollTimeInterval = 2.0;
     _autoScroll = YES;
     _infiniteLoop = YES;
+    
+
+    
+    
 }
 
 -(void)setupMainView
@@ -300,6 +304,12 @@
 -(void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView
 {
      NSLog(@"scrollViewDidEndDecelerating");
+}
+
+-(void)dealloc
+{
+    _mainView.dataSource = nil;
+    _mainView.delegate = nil;
 }
 
 @end

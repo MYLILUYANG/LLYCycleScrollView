@@ -29,7 +29,12 @@
     LLYCycleScrollView *cycView = [LLYCycleScrollView initWithFrame:CGRectMake(0, 64, K_ScreenWidth, 180) delegate:self placeholderImage:nil];
     cycView.imageUrlStringGroup = imagesURLStrings;
     [self.view addSubview:cycView];
-    
+        UIPageControl *controller = [[UIPageControl alloc] initWithFrame:CGRectMake(0, 300, K_ScreenWidth, 30)];
+    controller.backgroundColor = [UIColor lightGrayColor];
+    controller.numberOfPages = 6;
+    controller.currentPage = 2;
+    controller.tintColor = [UIColor yellowColor];
+    [self.view addSubview:controller];
 }
 
 
