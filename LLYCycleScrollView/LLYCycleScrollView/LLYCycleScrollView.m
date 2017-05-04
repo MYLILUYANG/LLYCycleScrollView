@@ -9,6 +9,7 @@
 #import "LLYCycleScrollView.h"
 #import "LLYCycleCell.h"
 #import "UIImageView+WebCache.h"
+#import "UIView+Frame.h"
 @interface LLYCycleScrollView ()<UICollectionViewDelegate, UICollectionViewDataSource>
 
 @property (nonatomic, weak) UICollectionView *mainView;
@@ -174,28 +175,50 @@
 {
     if (_totalItemsCount == 0) return;
     
-    if (_flowLayout.scrollDirection == UICollectionViewScrollDirectionHorizontal) {
-#warning 计算scroll 的 index 
-        NSLog(@"scroll to next one");
-        [self scrollToIndex:10];
+    int currentIndex = [self currentIndex];
+    
+    int targetIndex = currentIndex + 1;
 
+    [self scrollToIndex:targetIndex];
+
+}
+
+-(int)currentIndex
+{
+    if (_mainView.lly_width == 0 || _mainView.lly_height == 0) return 0;
+    
+    int index = 0;
+    if (_flowLayout.scrollDirection == UICollectionViewScrollDirectionHorizontal) {
+        
+        index = (_mainView.contentOffset.x + _flowLayout.itemSize.width * 0.5 )/_flowLayout.itemSize.width;
+        
     }
     
+    return MAX(0, index);
 }
 
 -(void)scrollToIndex:(int)index
 {
     if (index >= _totalItemsCount) {
         if (_infiniteLoop) {
-            
+
             index = _totalItemsCount * 0.5;
-            [_mainView scrollToItemAtIndexPath:[NSIndexPath indexPathForItem:index inSection:0] atScrollPosition:UICollectionViewScrollPositionNone animated:YES];
+            [_mainView scrollToItemAtIndexPath:[NSIndexPath indexPathForItem:index inSection:0] atScrollPosition:UICollectionViewScrollPositionNone animated:NO];
 
             return;
             
         }
         
+    }else if (index <= 1){
+        
+        [_mainView reloadData];
+        
+        index = _totalItemsCount * 0.5;
+        [_mainView scrollToItemAtIndexPath:[NSIndexPath indexPathForItem:index inSection:0] atScrollPosition:UICollectionViewScrollPositionNone animated:NO];
+        
+        return;
     }
+    
     [_mainView scrollToItemAtIndexPath:[NSIndexPath indexPathForItem:index inSection:0] atScrollPosition:UICollectionViewScrollPositionNone animated:YES];
     
     
@@ -256,7 +279,7 @@
 
 -(void)scrollViewDidScroll:(UIScrollView *)scrollView
 {
-    NSLog(@"did scroll");
+    
 }
 
 -(void)scrollViewWillBeginDragging:(UIScrollView *)scrollView
